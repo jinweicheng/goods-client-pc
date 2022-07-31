@@ -1,30 +1,30 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div>
+    app
+    <!-- 1、注意是双花括号 -->
+    <p>{{$store.state.username}}</p>
+    <!-- 2、计算属性使用 -->
+    <p>{{$store.getters.newName}}</p>
+
+    <button @click="mutationFn">update</button>
+  </div>
 </template>
 
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+<script>
+import { useStore } from 'vuex'
+export default {
+  name: 'app',
+  setup () {
+    const store = useStore()
+    console.log(store.state.username)
+    // eslint-disable-next-line no-unused-vars
+    const mutationsFn = () => {
+      console.log('111')
+      store.commit('updateName')
+      // store.dispatch('updateName')
     }
+    return { mutationsFn }
   }
 }
-</style>
+
+</script>
