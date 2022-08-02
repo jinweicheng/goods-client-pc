@@ -30,6 +30,7 @@ export default createStore({
     category,
     user
   },
+  // 配置local storage
   plugins: [
     createPersistedstate({
       key: 'goods-client-pc-store',
