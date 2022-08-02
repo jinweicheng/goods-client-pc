@@ -15,12 +15,18 @@
 import AppTopnav from '@/components/app-topnav.vue'
 import AppHeader from '@/components/app-header.vue'
 import AppFooter from '@/components/app-footer.vue'
+import { useStore } from 'vuex'
 export default {
   name: 'layoutPage',
   components: {
     AppTopnav,
     AppHeader,
     AppFooter
+  },
+  setup () {
+    console.log('category')
+    const store = useStore()
+    store.dispatch('category/getList')
   }
 }
 </script>
