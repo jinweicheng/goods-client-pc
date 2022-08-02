@@ -1,22 +1,31 @@
 <template>
-  <div class="app-layout">
-    <nav>顶部组件</nav>
-    <header>头部组件</header>
-    <div class="main">
-    <!-- <Home> -->
+  <div>
+    <AppTopnav></AppTopnav>
+    <AppHeader></AppHeader>
+    <div class="app-body">
       <router-view />
-    <!-- </Home> -->
     </div>
-    <footer>底部组件</footer>
+    <AppFooter></AppFooter>
+    <!-- <button @click="$store.commit('user/setUser',{})">loginout</button>
+    <button @click="$store.commit('user/setUser',{ token: 'cjwtoken'})">login</button> -->
   </div>
 </template>
 
 <script>
-// import Home from './home'
+import AppTopnav from '@/components/app-topnav.vue'
+import AppHeader from '@/components/app-header.vue'
+import AppFooter from '@/components/app-footer.vue'
 export default {
   name: 'layoutPage',
   components: {
-    // Home
+    AppTopnav,
+    AppHeader,
+    AppFooter
   }
 }
 </script>
+<style scoped lang="less">
+  .app-body {
+    height: 600px
+  }
+</style>
