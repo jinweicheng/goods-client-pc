@@ -17,8 +17,8 @@ export default {
   actions: {
     async getList (state) {
       const res = await findAllCategory()
-      console.log('res', res)
-      state.commit('setList', res)
+      console.log('res', res.result)
+      state.commit('setList', res.result)
     }
   }
 }

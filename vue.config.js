@@ -14,16 +14,6 @@ module.exports = defineConfig({
     }
   },
   devServer: {
-    proxy: {
-      // 配置跨域
-      '/api': {
-        target: 'http://localhost:8088/api',
-        ws: true,
-        changOrigin: true,
-        pathRewrite: {
-          '^/api': 'http://pcapi-xiaotuxian-front-devtest.itheima.net/'
-        }
-      }
-    }
+    proxy: 'http://pcapi-xiaotuxian-front-devtest.itheima.net/'
   }
 })
