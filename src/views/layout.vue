@@ -2,6 +2,7 @@
   <div>
     <AppTopnav></AppTopnav>
     <AppHeader></AppHeader>
+    <AppHeaderSticky></AppHeaderSticky>
     <div class="app-body">
       <router-view />
     </div>
@@ -15,13 +16,15 @@
 import AppTopnav from '@/components/app-topnav.vue'
 import AppHeader from '@/components/app-header.vue'
 import AppFooter from '@/components/app-footer.vue'
+import AppHeaderSticky from '@/components/app-header-sticky.vue'
 import { useStore } from 'vuex'
 export default {
   name: 'layoutPage',
   components: {
     AppTopnav,
     AppHeader,
-    AppFooter
+    AppFooter,
+    AppHeaderSticky
   },
   setup () {
     console.log('category')

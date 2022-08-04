@@ -14,6 +14,6 @@ export default {
 <style scoped lang="less">
 // @import '../../assets/styles/mixins.less';
 .container {
-  .hoverShadow();
+  // .hoverShadow();
 }
 </style>

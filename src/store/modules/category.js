@@ -12,13 +12,24 @@ export default {
   mutations: {
     setList (state, payload) {
       state.list = payload
+    },
+    showSubCategory (state, id) {
+      const item = state.list.find(item => item.id === id)
+      item.show = true
+    },
+    hideSubCategory (state, id) {
+      const item = state.list.find(item => item.id === id)
+      item.show = false
     }
   },
   actions: {
     async getList (state) {
-      const res = await findAllCategory()
-      console.log('res', res.result)
-      state.commit('setList', res.result)
+      const { result } = await findAllCategory()
+      result.forEach(item => {
+        item.show = false
+      })
+      console.log('result', result)
+      state.commit('setList', result)
     }
   }
 }
