@@ -1,18 +1,23 @@
 <template>
-  <div class='home-category'>
+  <div class='home-category' @mouseleave="currenID=null">
     <ul class="menu">
-      <li v-for="item in menuList" :key="item.id" @mouseenter="currenID=item.id">
+      <li v-for="item in menuList" :class="{active:currenID===item.id}" :key="item.id" @mouseenter="currenID=item.id">
         <!-- 一级 -->
         <RouterLink :to="`/category/${item.id}`">{{item.name}}</RouterLink>
         <!-- 二级 -->
         <template v-if=item.children>
           <RouterLink v-for="sub in item.children" :key="sub.id" :to="`/category/sub/${sub.id}`">{{sub.name}}</RouterLink>
         </template>
+        <span v-else>
+          <AppSkeleton width="60px" height="18px" style="margin-right:5px" bg="rgba(255,255,255,0.4)" animated />
+          <AppSkeleton width="50px" height="18px" bg="rgba(255,255,255,0.4)" animated/>
+        </span>
       </li>
     </ul>
     <!-- 弹层数据 -->
     <div class="layer">
       <h4>分类推荐 <small>根据您的购买或浏览记录推荐</small></h4>
+      <!-- 分类数据 -->
       <ul v-if="currenCategory && currenCategory.goods">
         <li v-for="good in currenCategory.goods" :key="good.id">
           <RouterLink to="/">
@@ -25,6 +30,7 @@
           </RouterLink>
         </li>
       </ul>
+      <!-- 品牌数据 -->
       <ul v-if="currenCategory && currenCategory.brands">
         <li class="brand" v-for="brand in currenCategory.brands" :key="brand.id">
           <RouterLink to="/">
@@ -45,8 +51,12 @@
 import { computed, reactive, ref } from 'vue'
 import { useStore } from 'vuex'
 import { findBrand } from '@/api/home'
+// import AppSkeleton from '@/components/lib/app-skeleton.vue'
 export default {
   name: 'HomeCategory',
+  components: {
+    // AppSkeleton
+  },
   setup () {
     // 1、左侧分类数据
     const brand = reactive({
@@ -99,7 +109,7 @@ export default {
       padding-left: 40px;
       height: 50px;
       line-height: 50px;
-      &:hover {
+      &:hover, &.active {
         background: @mainColor;
       }
       a {
@@ -159,7 +169,7 @@ export default {
           .info {
             padding-left: 10px;
             line-height: 24px;
-             width: 190px;
+            width: 190px;
             .name {
               font-size: 16px;
               color: #666;
@@ -202,6 +212,18 @@ export default {
     .layer {
       display: block;
     }
+  }
+}
+
+.app-skeleton {
+  animation: fade 1s linear infinite alternate;
+}
+@keyframes fade {
+  from {
+    opacity: 0.2;
+  }
+  to {
+    opacity: 1;
   }
 }
 </style>

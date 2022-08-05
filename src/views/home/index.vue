@@ -6,10 +6,12 @@
         <HomeCategory />
       </div>
     </div>
+    <!-- <AppSkeleton width="200px" height="100px" bg="red" animated/> -->
   </div>
 </template>
 <script>
 import HomeCategory from './components/home-category'
+// import AppSkeleton from '@/components/lib/app-skeleton.vue'
 export default {
   name: 'PageHome',
   components: { HomeCategory }
