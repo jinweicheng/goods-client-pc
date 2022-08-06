@@ -2,19 +2,29 @@
   <div class="page-home">
     <div class="home-entry">
       <div class="container">
+        <!-- 轮播图 -->
+        <HomeBanner/>
         <!-- 左侧分类 -->
         <HomeCategory />
       </div>
     </div>
-    <!-- <AppSkeleton width="200px" height="100px" bg="red" animated/> -->
   </div>
 </template>
 <script>
 import HomeCategory from './components/home-category'
-// import AppSkeleton from '@/components/lib/app-skeleton.vue'
+import HomeBanner from './components/home-banner'
 export default {
   name: 'PageHome',
-  components: { HomeCategory }
+  components: { HomeCategory, HomeBanner }
 }
 </script>
-<style scoped lang="less"></style>
+<style scoped lang="less">
+.app-carousel {
+  :deep(carousel-btn.prev){
+    left: 270px;
+  }
+  :deep(.carousel-indicator){
+    padding-left: 250px;
+  }
+}
+</style>

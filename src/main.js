@@ -4,6 +4,6 @@ import router from './router'
 import store from './store'
 import 'normalize.css'
 import './assets/styles/common.less'
-import skeleton from './components/lib/index'
-createApp(App).use(store).use(router).use(skeleton).mount('#app')
+import commonUI from './components/lib/index'
+createApp(App).use(store).use(router).use(commonUI).mount('#app')
 // createApp(App).use(store).use(router).mount('#app')

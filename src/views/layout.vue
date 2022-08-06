@@ -7,9 +7,6 @@
       <router-view />
     </div>
     <AppFooter></AppFooter>
-
-    <AppSkeleton width="100px" height="180px" style="margin-right:5px"/>
-    <AppSkeleton width="100px" height="180px"/>
     <!-- <button @click="$store.commit('user/setUser',{})">loginout</button>
     <button @click="$store.commit('user/setUser',{ token: 'cjwtoken'})">login</button> -->
   </div>
