@@ -1,20 +1,22 @@
 <template>
-<!-- 面板标题 -->
-  <HomePanel title="人气推荐" sub-title="人气爆款 不容错过">
-    <!-- 面板内容 -->
-    <Transition name="fade">
-      <ul v-if="goods.length" class="goods-list">
-        <li v-for="item in goods" :key="item.id">
-          <RouterLink to="/">
-            <img :src="item.picture" alt="">
-            <p class="name">{{item.title}}</p>
-            <p class="desc">{{item.alt}}</p>
-          </RouterLink>
-        </li>
-      </ul>
-      <HomeSkeleton v-else></HomeSkeleton>
-    </Transition>
-  </HomePanel>
+  <div ref="target">
+    <!-- 面板标题 -->
+    <HomePanel title="人气推荐" sub-title="人气爆款 不容错过">
+      <!-- 面板内容 -->
+      <Transition name="fade">
+        <ul v-if="goods.length" class="goods-list">
+          <li v-for="item in goods" :key="item.id">
+            <RouterLink to="/">
+              <img :src="item.picture" alt="">
+              <p class="name">{{item.title}}</p>
+              <p class="desc">{{item.alt}}</p>
+            </RouterLink>
+          </li>
+        </ul>
+        <HomeSkeleton v-else></HomeSkeleton>
+      </Transition>
+    </HomePanel>
+  </div>
 </template>
 
 <script>
@@ -22,6 +24,7 @@ import { ref } from 'vue'
 import { findHot } from '@/api/home'
 import HomePanel from './home-panel.vue'
 import HomeSkeleton from './home-skeleton.vue'
+import { useLazyData } from '@/hooks'
 export default {
   name: 'HomeHot',
   components: {
@@ -29,12 +32,14 @@ export default {
     HomeSkeleton
   },
   setup () {
-    const goods = ref([])
-    findHot().then(data => {
-      console.log('findHot', data.result)
-      goods.value = data.result
-    })
-    return { goods }
+    // const goods = ref([])
+    // findHot().then(data => {
+    //   console.log('findHot', data.result)
+    //   goods.value = data.result
+    // })
+    const target = ref(null)
+    const { result } = useLazyData(target, findHot)
+    return { goods: result, target }
   }
 }
 </script>

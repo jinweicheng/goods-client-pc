@@ -11,7 +11,7 @@
     <!-- 2、新鲜好物 -->
     <HomeNew />
     <!-- 3、热门推荐 -->
-    <HomeHot/>
+    <HomeHot />
   </div>
 </template>
 <script>

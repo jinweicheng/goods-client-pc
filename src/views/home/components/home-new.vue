@@ -1,5 +1,5 @@
 <template>
-  <div class="home-new">
+  <div class="home-new" ref="target">
     <!-- 面板标题 -->
     <HomePanel title="新鲜好物" subTitle="新鲜出炉 品质靠谱">
       <template #right><AppMore path="/test" /> </template>
@@ -25,6 +25,7 @@ import { ref } from 'vue'
 import HomePanel from './home-panel.vue'
 import { findNew } from '@/api/home'
 import HomeSkeleton from './home-skeleton.vue'
+import { useLazyData } from '@/hooks'
 export default {
   name: 'HomeNew',
   components: {
@@ -32,12 +33,14 @@ export default {
     HomeSkeleton
   },
   setup () {
-    const goods = ref([])
-    findNew().then(data => {
-      console.log('findNew', data.result)
-      goods.value = data.result
-    })
-    return { goods }
+    // const goods = ref([])
+    // findNew().then(data => {
+    //   console.log('findNew', data.result)
+    //   goods.value = data.result
+    // })
+    const target = ref(null)
+    const { result } = useLazyData(target, findNew)
+    return { goods: result, target }
   }
 }
 </script>
