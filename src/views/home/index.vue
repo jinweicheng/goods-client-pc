@@ -19,11 +19,11 @@ export default {
 }
 </script>
 <style scoped lang="less">
-.app-carousel {
-  :deep(carousel-btn.prev){
+:deep(.app-carousel) {
+  .carousel-btn.prev{
     left: 270px;
   }
-  :deep(.carousel-indicator){
+  .carousel-indicator{
     padding-left: 250px;
   }
 }

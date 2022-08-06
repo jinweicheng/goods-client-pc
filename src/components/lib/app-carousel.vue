@@ -2,9 +2,6 @@
   <div class="app-carousel" @mouseenter="stopTimerFn" @mouseleave="startTimerFn">
     <ul class="carousel-body">
       <!-- 轮播图 -->
-      {
-        {{banners}}
-      }
       <li class="carousel-item" v-for="(item,i) in banners" :key="item.id" :class="{fade:index===i}">
         <RouterLink to="/">
           <img :src="item.imgUrl" alt="">
