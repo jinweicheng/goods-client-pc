@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { ref, watch } from 'vue'
+import { onUnmounted, ref, watch } from 'vue'
 
 export default {
   name: 'AppCarousel',
@@ -96,6 +96,11 @@ export default {
     const clickIndicator = (value) => {
       index.value = value
     }
+
+    // 5、组件卸载时清除定时器
+    onUnmounted(() => {
+      clearInterval(timer)
+    })
 
     return { index, nextfn, stopTimerFn, startTimerFn, clickIndicator }
   }
