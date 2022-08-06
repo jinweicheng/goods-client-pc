@@ -38,27 +38,30 @@ export default {
 </script>
 
 <style scoped lang="less">
-.goods-list {
-  display: flex;
-  justify-content: space-between;
-  height: 406px;
-  li {
-    width: 306px;
+.home-new {
+  .goods-list {
+    display: flex;
+    justify-content: space-between;
     height: 406px;
-    background: #f0f9f4;
-    .hoverShadow();
-    img {
+    li {
       width: 306px;
-      height: 306px;
-    }
-    p {
-      font-size: 22px;
-      padding: 12px 30px 0 30px;
-      text-align: center;
-    }
-    .price {
-      color: @priceColor;
+      height: 406px;
+      background: #f0f9f4;
+      .hoverShadow();
+      img {
+        width: 306px;
+        height: 306px;
+      }
+      p {
+        font-size: 22px;
+        padding: 12px 30px 0 30px;
+        text-align: center;
+      }
+      .price {
+        color: @priceColor;
+      }
     }
   }
 }
+
 </style>

@@ -22,6 +22,9 @@ export default {
 }
 </script>
 <style scoped lang="less">
+.home-entry {
+  // margin-bottom: 20px;
+}
 :deep(.app-carousel) {
   .carousel-btn.prev{
     left: 270px;
