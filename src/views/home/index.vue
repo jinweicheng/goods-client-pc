@@ -10,21 +10,24 @@
 
     <!-- 2、新鲜好物 -->
     <HomeNew />
+    <!-- 3、热门推荐 -->
+    <HomeHot/>
   </div>
 </template>
 <script>
 import HomeCategory from './components/home-category'
 import HomeBanner from './components/home-banner'
 import HomeNew from './components/home-new.vue'
+import HomeHot from './components/home-hot.vue'
 export default {
   name: 'PageHome',
-  components: { HomeCategory, HomeBanner, HomeNew }
+  components: { HomeCategory, HomeBanner, HomeNew, HomeHot }
 }
 </script>
 <style scoped lang="less">
-.home-entry {
+// .home-entry {
   // margin-bottom: 20px;
-}
+// }
 :deep(.app-carousel) {
   .carousel-btn.prev{
     left: 270px;
