@@ -1,11 +1,11 @@
 <template>
   <div ref="target">
     <HomePanel title="最新专题">
-      <template v-slot:right><XtxMore /></template>
+      <template v-slot:right><AppMore /></template>
       <div class="special-list" ref="homeSpecial">
         <div class="special-item" v-for="item in lists" :key="item.id">
           <RouterLink to="/">
-            <img :src="item.cover" alt />
+            <img v-lazyload="item.cover" alt />
             <div class="meta">
               <p class="title">
                 <span class="top ellipsis">{{item.title}}</span>

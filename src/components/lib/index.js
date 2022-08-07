@@ -5,6 +5,7 @@
 import AppSkeleton from './app-skeleton.vue'
 import AppCarousel from './app-carousel.vue'
 import AppMore from './app-more.vue'
+import defaultImg from '@/assets/images/200.png'
 export default {
   install (app) {
     // 在app上进行扩展，app提供 component directive 函数
@@ -12,5 +13,28 @@ export default {
     app.component(AppSkeleton.name, AppSkeleton)
     app.component(AppCarousel.name, AppCarousel)
     app.component(AppMore.name, AppMore)
+    defineDirection(app)
   }
+}
+// 自定义指令：v-lazyload
+const defineDirection = (app) => {
+  app.directive('lazyload', {
+    mounted (el, binding) {
+      // el为dom，binding为绑定dom对象的属性值
+      const observe = new IntersectionObserver(([{ isIntersecting }]) => {
+        // 监听dom对象是否进入可视区
+        if (isIntersecting) {
+          observe.unobserve(el)
+          el.onerror = () => {
+            el.src = defaultImg
+          }
+          el.src = binding.value
+        }
+      }, {
+        threshold: 0.01
+      })
+      // 监听dom对象
+      observe.observe(el)
+    }
+  })
 }
