@@ -11,3 +11,6 @@ export const findNew = () => {
 export const findHot = () => {
   return request('home/hot', 'get')
 }
+export const findSpecial = () => {
+  return request('home/special', 'get')
+}
